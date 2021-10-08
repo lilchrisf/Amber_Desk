@@ -15,19 +15,32 @@
             <form class="mt-6" action="{{route("On-Register")}}" method="POST">
                 @csrf
                 <div>
-                    <label class="block text-gray-700">Email Address</label>
-                    <input type="email" name="email_addr" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+                    <label class="block text-gray-700">Email Address
+                        @error('email_addr')
+                            {{$message}}
+                        @enderror
+                    </label>
+                    <input type="email" name="email_addr" id="" placeholder="Enter Email Address" class="@error('email_addr') border border-red-600 @enderror w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
                 </div>
 
                 <div class="mt-4">
-                    <label class="block text-gray-700">Password</label>
-                    <input type="password" name="password" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    <label class="block text-gray-700">Password
+                        @error('password')
+                        {{$message}}
+                        @enderror
+                    </label>
+                    <input type="password" name="password" id="" placeholder="Enter Password" minlength="6" class="@error('password') border border-red-600 @enderror w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required>
                 </div>
 
                 <div class="mt-4">
-                    <label class="block text-gray-700">Password</label>
-                    <input type="password" name="password_confirmation" id="" placeholder="Verify Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    <label class="block text-gray-700">Verify Password
+                        @error('password')
+                        {{$message}}
+                        @enderror
+                    </label>
+
+                    <input type="password" name="password_confirmation" id="" placeholder="Verify Password" minlength="6" class="@error('password_confirmation') border border-red-600 @enderror w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required>
                 </div>
 

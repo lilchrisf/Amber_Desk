@@ -15,7 +15,8 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Gate::allows('create',User::class);
+        return true;
+//        return Gate::allows('create',User::class);
     }
 
     /**
@@ -27,7 +28,7 @@ class StoreUserRequest extends FormRequest
     {
 
         return [
-            'email' => 'required|email',
+            'email_addr' => 'required|email',
             'password' => 'required|confirmed',
         ];
     }

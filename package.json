@@ -21,6 +21,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "alpinejs": "^3.4.2",
         "jquery": "^3.6.0",
         "laravel-mix": "^6.0.31"
     }
