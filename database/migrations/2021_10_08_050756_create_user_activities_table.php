@@ -15,8 +15,9 @@ class CreateUserActivitiesTable extends Migration
     {
         Schema::create('user_activities', function (Blueprint $table) {
             $table->id('user_activity_id');
-            $table->foreignId('user_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreignId('user_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('activity_desc');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
