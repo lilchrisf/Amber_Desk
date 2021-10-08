@@ -11,6 +11,8 @@ class Assignment_submission extends Model
 
     protected $primaryKey = 'assign_id';
 
+    protected $table = "assignment_submissions";
+
     protected $fillable = [
         'student_id',
         'home_work',

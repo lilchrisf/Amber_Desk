@@ -17,4 +17,6 @@ class Student extends Model
     ];
 
     protected $primaryKey = 'stu_id';
+
+    protected $table = 'students';
 }

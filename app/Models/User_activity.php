@@ -16,4 +16,6 @@ class User_activity extends Model
     ];
 
     protected $primaryKey = 'user_activity_id';
+
+    protected $table = 'user_activities';
 }

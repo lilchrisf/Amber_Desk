@@ -19,4 +19,6 @@ class Class_room extends Model
 
     protected $primaryKey = 'class_id';
 
+    protected $table = "class_rooms";
+
 }

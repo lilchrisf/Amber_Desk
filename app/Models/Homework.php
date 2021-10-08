@@ -20,4 +20,6 @@ class Homework extends Model
         'visibility',
     ];
 
+    protected $table = 'homework';
+
 }
