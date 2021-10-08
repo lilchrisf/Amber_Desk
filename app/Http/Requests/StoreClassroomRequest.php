@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property mixed $class_nm
  * @property mixed $class_desc
- * @property mixed $subject
  * @property mixed $password
  */
 class StoreClassroomRequest extends FormRequest
@@ -31,8 +30,6 @@ class StoreClassroomRequest extends FormRequest
     {
         return [
             'class_nm' => 'required',
-            'class_desc' => 'required',
-            'subject' => 'required',
             'password' => 'required'
         ];
     }

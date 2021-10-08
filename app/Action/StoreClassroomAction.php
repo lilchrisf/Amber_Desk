@@ -18,10 +18,8 @@ class StoreClassroomAction
         Classroom::create([
             'user_id' => Auth::id(),
             'class_nm' => $request->class_nm,
-            'class_desc' => $request->class_desc,
-            'subject' => $request->subject,
             'password' => $request->password,
-            'invi_link' => trim($request->subject.$request->class_nm.uniqid('', true))
+            'invi_link' => trim($request->class_nm.uniqid('', true))
         ]);
 
     }

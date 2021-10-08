@@ -26,41 +26,44 @@ class ClassroomController extends Controller
         return view('user.Classroom.view');
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
      * @param StoreClassroomRequest $request
      * @param StoreClassroomAction $action
-     * @return Application|RedirectResponse|Redirector
+     * @return RedirectResponse
      */
-    public function store(StoreClassroomRequest $request ,StoreClassroomAction $action)
+    public function store(StoreClassroomRequest $request ,StoreClassroomAction $action): RedirectResponse
     {
+//        dd($request->all());
         $action->execute($request);
 
-        return redirect('/')->with(['message' => 'Classroom Created Successfully']);
+        return redirect()->route('User-Dashboard')->with(['message' => 'Classroom Created Successfully']);
+
     }
 
     /**
      * Display the specified resource.
      *
      * @param Classroom $classroom
-     * @return void
+     * @return Application|Factory|View
      */
     public function show(Classroom $classroom)
     {
-        dd($classroom);
+        $userClassrooms = Classroom::all()->where('user_id',auth()->id());
+
+        return view('user.Dashboard.show',compact('classroom'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Classroom $classroom
-     * @return Response
+//     * @return Response
      */
     public function edit(Classroom $classroom)
     {
-        //
+        return \view('user.Modal-Testing.ClassroomModals');
     }
 
     /**
@@ -71,6 +74,7 @@ class ClassroomController extends Controller
      * @return Response
      */
     public function update(Request $request, Classroom $classroom)
+
     {
         //
     }

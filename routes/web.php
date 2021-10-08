@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Homepage\HomepageController;
 use App\Http\Controllers\Log_Reg\LoginController;
 use App\Http\Controllers\Log_Reg\RegisterController;
@@ -27,8 +28,16 @@ Route::post("/on-register",[RegisterController::class,'create'])->name('On-Regis
 
 
 
+
 Route::get('/',[HomepageController::class,'index'])->name('Homepage');
 
-Route::group(['prefix' => 'user', 'as' => 'user.'],function(){
+Route::get('/dashboard',[DashboardController::class,'index'])->name('User-Dashboard');
+
+Route::group(['prefix' => 'dashboard', 'as' => 'user.'],function(){
     Route::resource('classroom',ClassroomController::class);
 });
+
+Route::get('/modal',function () {
+    return view('user.Modal-Testing.ClassroomModals');
+});
+
