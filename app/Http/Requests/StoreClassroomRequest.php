@@ -2,21 +2,24 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
-class StoreUserRequest extends FormRequest
+/**
+ * @property mixed $class_nm
+ * @property mixed $class_desc
+ * @property mixed $subject
+ * @property mixed $password
+ */
+class StoreClassroomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
-//        return Gate::allows('create',User::class);
     }
 
     /**
@@ -26,10 +29,11 @@ class StoreUserRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'email_addr' => 'required|email',
-            'password' => 'required|confirmed',
+            'class_nm' => 'required',
+            'class_desc' => 'required',
+            'subject' => 'required',
+            'password' => 'required'
         ];
     }
 }

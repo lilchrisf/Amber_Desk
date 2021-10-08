@@ -20,7 +20,7 @@ class CreateClassroomsTable extends Migration
             $table->string('class_desc');
             $table->string('subject');
             $table->string('password');
-            $table->string('invi_link')->default(uniqid('', true));
+            $table->string('invi_link');
             $table->timestamps();
             $table->softDeletes();
 

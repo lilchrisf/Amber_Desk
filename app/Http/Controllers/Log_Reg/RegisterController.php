@@ -13,11 +13,13 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function index(){
+
+    public function index()
+    {
         return view('Login_Registration.registration');
     }
 
-    public function create(StoreUserAction $storeUserAction,Request $request)
+    public function create(StoreUserRequest $request,StoreUserAction $storeUserAction): RedirectResponse
     {
         $storeUserAction->execute($request);
 
