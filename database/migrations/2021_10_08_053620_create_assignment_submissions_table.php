@@ -17,13 +17,13 @@ class CreateAssignmentSubmissionsTable extends Migration
             $table->id('assign_id');
 
             $table->foreignId('student_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('home_work')->constrained('homework','hw_id')->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreignId('home_work')->constrained('homework','hw_id')->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->longText('assignment');
             $table->string('completion_status');
             $table->integer('grade');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

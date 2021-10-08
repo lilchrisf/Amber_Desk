@@ -16,10 +16,13 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id('stu_id');
 
-            $table->foreignId('student_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();;
-            $table->foreignId('class_id')->constrained('class_rooms','class_id')->cascadeOnDelete()->cascadeOnUpdate();;
+            $table->foreignId('student_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('class_id')->constrained('class_rooms','class_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('is_enrolled');
+
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
