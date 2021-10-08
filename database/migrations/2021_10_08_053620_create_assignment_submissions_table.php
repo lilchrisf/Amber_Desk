@@ -16,8 +16,8 @@ class CreateAssignmentSubmissionsTable extends Migration
         Schema::create('assignment_submissions', function (Blueprint $table) {
             $table->id('assign_id');
 
-            $table->foreignId('student_id')->constrained('users','user_id');
-            $table->foreignId('home_work')->constrained('homework','hw_id');
+            $table->foreignId('student_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('home_work')->constrained('homework','hw_id')->cascadeOnDelete()->cascadeOnUpdate();;
 
             $table->longText('assignment');
             $table->string('completion_status');

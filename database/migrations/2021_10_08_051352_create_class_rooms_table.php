@@ -15,8 +15,8 @@ class CreateClassRoomsTable extends Migration
     {
         Schema::create('class_rooms', function (Blueprint $table) {
             $table->id('class_id');
-            $table->string('class_password');
-            $table->foreignId('teacher_id')->constrained('users','user_id');
+            $table->string('password');
+            $table->foreignId('teacher_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();;
             $table->string('class_name');
             $table->string('invi_link');
             $table->timestamps();
