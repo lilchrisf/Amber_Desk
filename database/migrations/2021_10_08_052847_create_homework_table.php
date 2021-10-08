@@ -20,9 +20,10 @@ class CreateHomeworkTable extends Migration
             $table->longText('description');
             $table->date('deadline');
             $table->integer('visibility')->nullable();
-            $table->softDeletes();
+
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

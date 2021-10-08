@@ -22,9 +22,8 @@ class CreateAssignmentSubmissionsTable extends Migration
             $table->longText('assignment');
             $table->string('completion_status');
             $table->integer('grade');
-            $table->softDeletes();
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

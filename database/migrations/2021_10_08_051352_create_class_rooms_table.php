@@ -19,9 +19,10 @@ class CreateClassRoomsTable extends Migration
             $table->foreignId('teacher_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('class_name');
             $table->string('invi_link');
-            $table->softDeletes();
+
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
