@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Homepage\HomepageController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [HomepageController::class, 'index'])->name('Homepage');
 
-Route::get('/',[HomepageController::class,'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('User-Dashboard');
+
+
+Route::post('/dashboard/restore/{classroom}', [ClassroomController::class, 'restore'])->name('Restore-Classroom');
+Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
+    Route::resource('classroom', ClassroomController::class)->except('index');
+});
+
+
+require __DIR__.'/OAuth.php';
+require __DIR__.'/Login_Registration.php';
