@@ -6,20 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Assignment_submission extends Model
+class Classroom extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $primaryKey = 'assign_id';
-
-    protected $table = "assignment_submissions";
 
     protected $fillable = [
-        'student_id',
-        'home_work',
-        'assignment',
-        'completion_status',
-        'grade',
+        'class_password',
+        'teacher_id',
+        'class_name',
+        'invi_link',
     ];
+
+    protected $primaryKey = 'class_id';
+
+    protected $table = "class_rooms";
+
 }

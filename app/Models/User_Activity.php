@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User_activity extends Model
+class User_Activity extends Model
 {
     use HasFactory;
     use SoftDeletes;
