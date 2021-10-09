@@ -20,10 +20,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'acc_type',
-        'first_nm',
-        'last_nm',
-        'acc_status',
+        'user_id',
         'email',
         'password',
     ];
@@ -50,4 +47,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_info() {
+        return $this->hasOne(User_info::class,'user_id','user_id');
+    }
+
+    public function classroom() {
+        return $this->hasMany(Classroom::class,'teacher_id','user_id');
+    }
 }

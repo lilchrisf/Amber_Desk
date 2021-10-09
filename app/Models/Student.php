@@ -18,7 +18,6 @@ class Student extends Model
         'is_enrolled',
     ];
 
-    protected $primaryKey = 'stu_id';
-
+    protected $primaryKey = 'student_id';
     protected $table = 'students';
 }

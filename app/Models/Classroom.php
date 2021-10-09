@@ -21,6 +21,10 @@ class Classroom extends Model
 
     protected $primaryKey = 'class_id';
 
-    protected $table = "class_rooms";
+    protected $table = "classrooms";
+
+    public function user(){
+        return $this->belongsTo(User::class,'teacher_id','user_id');
+    }
 
 }

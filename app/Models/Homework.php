@@ -12,7 +12,7 @@ class Homework extends Model
     use SoftDeletes;
 
 
-    protected $primaryKey = 'hw_id';
+    protected $primaryKey = 'homework_id';
 
     protected $fillable = [
         'class_id',
