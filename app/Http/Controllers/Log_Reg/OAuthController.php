@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Log_Reg;
 
-use App\Action\GitHubAuth;
-use App\Action\GoogleAuth;
+use App\Action\GitHubAuthAction;
+use App\Action\GoogleAuthAction;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\User_info;
@@ -20,7 +20,7 @@ class OAuthController extends Controller
         return Socialite::driver('github')->redirect();
     }
 
-    public function handleGithubCallback(GitHubAuth $gitHubAuth): RedirectResponse
+    public function handleGithubCallback(GitHubAuthAction $gitHubAuth): RedirectResponse
     {
         $user = Socialite::driver('github')->user();
 
@@ -38,7 +38,7 @@ class OAuthController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleGoogleCallback(GoogleAuth $googleAuth): RedirectResponse
+    public function handleGoogleCallback(GoogleAuthAction $googleAuth): RedirectResponse
     {
         $user = Socialite::driver('google')->user();
 
