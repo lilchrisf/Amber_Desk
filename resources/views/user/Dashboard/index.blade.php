@@ -9,7 +9,7 @@
 
                         @forelse ($userClassrooms as $userClassroom)
 
-                            <a href="{{route('user.classroom.show',[$userClassroom->class_id])}}">
+                            <a href="{{route('user.classroom.show',[$userClassroom])}}">
                             <div class="p-4 mt-10  md:w-1/3">
                                 <div
                                     class="hover:shadow-2xl duration-200  shadow-md  h-full  border-opacity-60 rounded-lg overflow-hidden">
@@ -104,7 +104,6 @@
                             </div>
                         </div>
                         <button
-                            disabled
                             class="w-full my-6 mt-4 px-16 py-3 mr-2 text-base font-medium text-white transition duration-300 ease-in-out transform bg-orange-500 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-orange-400 ">
                             Create Classroom
                         </button>

@@ -38,7 +38,7 @@ class ClassroomController extends Controller
 //        dd($request->all());
         $action->execute($request);
 
-        return redirect()->route('User-Dashboard')->with(['message' => 'Classroom Created Successfully']);
+        return redirect()->route('User-Dashboard')->with(['CreatedAlert' => 'Classroom Created Successfully']);
 
     }
 
@@ -63,7 +63,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        return \view('user.Modal-Testing.ClassroomModals');
+//        return \view('user.Modal-Testing.ClassroomModals');
     }
 
     /**
@@ -76,17 +76,31 @@ class ClassroomController extends Controller
     public function update(Request $request, Classroom $classroom)
 
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Classroom $classroom
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        $classroom->delete();
+
+        return redirect('/dashboard')->with('undoDeletion',$classroom);
+    }
+
+
+    public function restore(int $classroom_id): RedirectResponse
+    {
+
+        $classroom = Classroom::withTrashed()->find($classroom_id);
+
+
+        $classroom->restore();
+
+
+        return redirect('/dashboard')->with(['RestoreAlert' => $classroom->class_nm ." ".'Restored Successfully']);
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Homepage\HomepageController;
 use App\Http\Controllers\Log_Reg\LoginController;
 use App\Http\Controllers\Log_Reg\RegisterController;
 use Illuminate\Support\Facades\Route;
+use SocialiteProviders\GitHub\GitHubExtendSocialite;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +35,19 @@ Route::get('/',[HomepageController::class,'index'])->name('Homepage');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('User-Dashboard');
 
+
+Route::post('/dashboard/restore/{classroom}',[ClassroomController::class,'restore'])->name('Restore-Classroom');
 Route::group(['prefix' => 'dashboard', 'as' => 'user.'],function(){
-    Route::resource('classroom',ClassroomController::class);
+    Route::resource('classroom',ClassroomController::class)->except('index');
 });
 
 Route::get('/modal',function () {
     return view('user.Modal-Testing.ClassroomModals');
 });
+
+Route::post('login/github',[LoginController::class,'RedirectToGithub'])->name('Github-Login');
+Route::get('login/github/callback',[LoginController::class,'handleGithubCallback']);
+
+Route::post('login/google',[LoginController::class,'RedirectToGoogle'])->name('Google-Login');
+Route::get('login/google/callback',[LoginController::class,'handleGoogleCallback']);
 

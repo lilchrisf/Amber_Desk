@@ -47,7 +47,7 @@
                              x-transition:leave-start="transform opacity-100 scale-100"
                              x-transition:leave-end="transform opacity-0 scale-95"
                              class="absolute right-0 bgw-full md:max-w-screen-sm md:w-screen mt-2 origin-top-right">
-                            <div class="mt-5 px-2 pt-2 pb-2 bg-gray-100 rounded-md shadow-2xl dark-mode:bg-gray-700">
+                            <div class="mt-5 px-2 pt-2 pb-2 z-50 bg-gray-100 rounded-md shadow-2xl dark-mode:bg-gray-700">
                                 <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                                     <button
                                         id="crt_classroom_open_btn"

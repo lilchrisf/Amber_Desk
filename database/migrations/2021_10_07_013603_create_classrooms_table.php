@@ -11,7 +11,7 @@ class CreateClassroomsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up():void
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id('class_id');
@@ -23,6 +23,7 @@ class CreateClassroomsTable extends Migration
             $table->string('invi_link');
             $table->timestamps();
             $table->softDeletes();
+
 
         });
     }

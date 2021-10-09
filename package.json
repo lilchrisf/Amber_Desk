@@ -23,6 +23,7 @@
     "dependencies": {
         "alpinejs": "^3.4.2",
         "jquery": "^3.6.0",
-        "laravel-mix": "^6.0.31"
+        "laravel-mix": "^6.0.31",
+        "sweetalert2": "^11.1.7"
     }
 }
