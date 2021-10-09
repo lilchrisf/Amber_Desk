@@ -13,7 +13,7 @@ class CreateClassRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_rooms', function (Blueprint $table) {
+        Schema::create('classrooms', function (Blueprint $table) {
             $table->id('class_id');
             $table->string('password');
             $table->foreignId('teacher_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssignmentSubmissionsTable extends Migration
+class CreateUserInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateAssignmentSubmissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assignment_submissions', function (Blueprint $table) {
-            $table->id('assignment_id');
-
+        Schema::create('user_infos', function (Blueprint $table) {
+            $table->id('user_info');
             $table->foreignId('user_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('homework_id')->constrained('homework','homework_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('first_nm')->nullable();
+            $table->string('last_nm')->nullable();
+            $table->string('username')->nullable()->unique();
+            $table->string('avatar')->nullable();
+            $table->longText('bio')->nullable();
 
-            $table->longText('assignment');
-            $table->boolean('completion_status')->default(0);
-            $table->integer('grade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +34,6 @@ class CreateAssignmentSubmissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignment_submissions');
+        Schema::dropIfExists('user_info');
     }
 }
