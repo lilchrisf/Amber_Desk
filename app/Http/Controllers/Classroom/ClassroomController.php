@@ -39,12 +39,17 @@ class ClassroomController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param StoreClassroomRequest $request
+     * @param StoreClassroomAction $action
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreClassroomRequest $request ,StoreClassroomAction $action): RedirectResponse
     {
-        //
+//        dd($request->all());
+        $action->execute($request);
+
+        return redirect()->route('User-Dashboard')->with(['CreatedAlert' => 'Classroom Created Successfully']);
+
     }
 
     /**
@@ -55,7 +60,9 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        return view('user.Classroom.view', compact('classroom'));
+        $userClassrooms = Classroom::all()->where('user_id',auth()->id());
+
+        return view('user.Classroom.view',compact('classroom'));
     }
 
     /**
@@ -91,7 +98,7 @@ class ClassroomController extends Controller
     {
         $classroom->delete();
 
-        return redirect('/dashboard')->with('undoDeletion', $classroom);
+        return redirect('/dashboard')->with('undoDeletion',$classroom);
     }
 
 

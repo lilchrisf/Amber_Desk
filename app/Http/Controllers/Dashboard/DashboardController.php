@@ -18,6 +18,7 @@ class DashboardController extends Controller
 
 //        dd($userClassrooms);
 
+//        dd($userClassrooms);
         return view('user.Dashboard.index',compact('userClassrooms'));
     }
 }
