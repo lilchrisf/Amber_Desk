@@ -16,9 +16,9 @@ class dashboard_sidebar extends Component
      *
      * @return void
      */
-    public function __construct($userClassrooms/*,$userEnrolled*/)
+    public function __construct($userClassrooms,$userEnrolled)
     {
-///*        $this->userEnrolled = $userEnrolled;*/
+        $this->userEnrolled = $userEnrolled;
         $this->userClassrooms = $userClassrooms;
     }
 
