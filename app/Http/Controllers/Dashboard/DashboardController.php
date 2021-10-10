@@ -12,9 +12,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-//        dd(\Auth::id());
-        $userClassrooms = User::with('classroom')->where('user_id',auth()->id())->get();
-//        $userClassrooms = User::find(auth()->id())->with('classroom')->get();
+        $userClassrooms = Classroom::all()->where('teacher_id',auth()->id());
 
 //        dd($userClassrooms);
 

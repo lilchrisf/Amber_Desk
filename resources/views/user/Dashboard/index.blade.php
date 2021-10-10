@@ -7,10 +7,12 @@
 @endsection
 
 @section('sidebar')
-    <x-User.Sidebar.dashboard_sidebar/>
+    <x-User.Sidebar.dashboard_sidebar :userClassrooms="$userClassrooms"/>
 @endsection
 
 @section('content')
+
+
     <section class="text-gray-600  body-font ">
         <div class=" px-5 mx-auto ">
             <div class="flex flex-wrap -m-4">
@@ -26,7 +28,7 @@
                                 <div class="p-6">
                                     <h1 class="title-font text-xl relative   font-bold text-gray-800 mb-3">{{$userClassroom->class_nm}}</h1>
                                     <p class="leading-relaxed 0 text-gray-600 font-medium mb-3">
-                                        Classroom
+                                        Topic
                                     </p>
                                     <div class="flex items-center flex-wrap ">
                                         <a></a>
@@ -43,23 +45,24 @@
 
                 @endforelse
 
-
             </div>
         </div>
     </section>
 
 
+
+{{--    TODO ADJUST MODAL JAVASCRIPT TOGGLE FUNCTION--}}
     {{--            Modals--}}
 
     {{--Create Classroom Modal--}}
 
-    <x-User.modal.dashboard_crt-class-toast/>
+    <x-User.modal.dashboard_crt-class-modal/>
 
     {{--Create Classroom Modal End--}}
 
     {{--Join Classroom Modal--}}
 
-    <x-User.modal.dashboard_join-class-toast/>
+    <x-User.modal.dashboard_join-class-modal/>
 
     {{--Join Classroom Modal End--}}
 

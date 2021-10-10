@@ -1,5 +1,5 @@
 <div id="join_classroom_modal"
-     class="h-screen w-screen hidden fixed  bg-white bg-opacity-90 inset-0  items-center px-5 py-12 lg:px-20">
+     class="h-screen w-screen z-50 hidden fixed  bg-white bg-opacity-90 inset-0  items-center px-5 py-12 lg:px-20">
     <div class="w-full px-5 mx-auto border rounded-lg shadow-xl lg:px-0 text-blueGray-500 lg:w-1/2"
          aria-hidden="false" aria-describedby="modalDescription" role="dialog">
         <div class="flex items-center justify-end px-6 py-4 ">

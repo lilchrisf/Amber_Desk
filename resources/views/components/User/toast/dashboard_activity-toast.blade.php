@@ -1,20 +1,20 @@
 
-<script>
+<script defer>
 
 
     let timerInterval
     Swal.fire({
-        titleText: {{$message}},
+        titleText: "{{$name}}",
         backdrop: false,
         toast: true,
         customClass: {
             icon: 'info',
         },
-        background: {{$background}},
+        background: '#fff',
         allowOutsideClick: true,
         showConfirmButton: false,
 
-        timer: {{$duration}},
+        timer: 3000,
         timerProgressBar: true,
         position: 'bottom-right',
         willClose: () => {

@@ -2,26 +2,28 @@
 
 namespace App\View\Components\User\Toast;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class dashboard_activityToast extends Component
 {
+    public $name;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View
      */
-    public function render()
+    public function render(): View
     {
         return view('components.user.toast.dashboard_activity-toast');
     }

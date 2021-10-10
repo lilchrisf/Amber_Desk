@@ -3,6 +3,7 @@
 namespace App\View\Components\User\Sidebar;
 
 use App\Models\Classroom;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class dashboard_sidebar extends Component
@@ -14,15 +15,15 @@ class dashboard_sidebar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userClassrooms)
     {
-        $this->userClassrooms = Classroom::all()->where('user_id',auth()->id())->toArray();
+        $this->userClassrooms = $userClassrooms;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return View
      */
     public function render()
     {

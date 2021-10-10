@@ -4,7 +4,7 @@ namespace App\View\Components\User\Modal;
 
 use Illuminate\View\Component;
 
-class dashboard_joinClassToast extends Component
+class dashboard_crtClassModal extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class dashboard_joinClassToast extends Component
      */
     public function render()
     {
-        return view('components.user.modal.dashboard_join-class-toast');
+        return view('components.User.modal.dashboard_crt-class-modal');
     }
 }
