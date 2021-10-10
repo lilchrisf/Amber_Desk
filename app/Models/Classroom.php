@@ -30,6 +30,11 @@ class Classroom extends Model
         return $this->belongsTo(User::class, 'teacher_id', 'user_id');
     }
 
+    public function teacherInfo()
+    {
+        return $this->belongsTo(User_info::class, 'teacher_id', 'user_id');
+    }
+
     public function student(){
         return $this->hasMany(Student::class,'class_id','class_id');
     }
