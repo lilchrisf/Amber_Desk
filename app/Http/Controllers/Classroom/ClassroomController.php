@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
 {
@@ -63,11 +64,13 @@ class ClassroomController extends Controller
     {
         $Classroom = Classroom::with('user')->find($classroom);
         $userClassrooms = Classroom::all()->where('teacher_id',auth()->id());
+        $userEnrolled = User::with('student')->where('user_id',auth()->id())->first();
+
 
 //        TODO RELEVANCE FUNCTIONALITY
 
 
-        return view('user.Classroom.view',compact('Classroom','userClassrooms'));
+        return view('user.Classroom.view',compact('Classroom','userClassrooms','userEnrolled'));
     }
 
     /**
@@ -102,6 +105,8 @@ class ClassroomController extends Controller
     public function destroy(Classroom $classroom)
     {
 //        dd($classroom);
+
+//        TODO ADD RELATION DELETE ACTION
         $classroom->delete();
 
 
@@ -120,4 +125,7 @@ class ClassroomController extends Controller
 
         return redirect()->route('User-Dashboard')->with(['message' => $classroom->class_nm . " " . 'Restored Successfully']);
     }
+
+
+
 }

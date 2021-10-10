@@ -7,7 +7,7 @@
 @endsection
 
 @section('sidebar')
-    <x-User.Sidebar.dashboard_sidebar :userClassrooms="$userClassrooms"/>
+    <x-User.Sidebar.dashboard_sidebar :userClassrooms="$userClassrooms" :userEnrolled="$userEnrolled"/>
 @endsection
 
 @section('content')

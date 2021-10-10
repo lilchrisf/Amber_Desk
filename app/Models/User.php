@@ -52,7 +52,20 @@ class User extends Authenticatable
         return $this->hasOne(User_info::class,'user_id','user_id');
     }
 
+
+    public function student() {
+        return $this->hasMany(Student::class,'user_id','user_id')->with('classroom');
+    }
+
     public function classroom() {
         return $this->hasMany(Classroom::class,'teacher_id','user_id');
+    }
+
+    public function user_activity() {
+        return $this->hasMany(User_Activity::class,'user_id','user_id');
+    }
+
+    public function assignment_submission(){
+        return $this->hasMany(Assignment_Submission::class,'user_id','user_id');
     }
 }

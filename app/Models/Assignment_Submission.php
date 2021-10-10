@@ -22,4 +22,12 @@ class Assignment_Submission extends Model
         'completion_status',
         'grade',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class,'user_id','user_id');
+    }
+
+    public  function homework() {
+        return $this->belongsTo(Homework::class,'homework_id','homework_id');
+    }
 }

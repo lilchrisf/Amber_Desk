@@ -6,6 +6,7 @@ use Hash;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Classroom extends Model
 {
@@ -29,8 +30,29 @@ class Classroom extends Model
         return $this->belongsTo(User::class, 'teacher_id', 'user_id');
     }
 
+    public function student(){
+        return $this->hasMany(Student::class,'class_id','class_id');
+    }
+
+
+    public function assignments(){
+        return $this->hasMany(Assignment::class,'class_id','class_id');
+    }
+
+    public function homework(){
+        return $this->hasMany(Homework::class,'class_id','class_id');
+    }
+
+
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function setInviLinkAttribute()
+    {
+        $this->attributes['invi_link'] = (Str::slug(Hash::make($this->attributes['class_nm'].uniqid('', true))));
+
     }
 }

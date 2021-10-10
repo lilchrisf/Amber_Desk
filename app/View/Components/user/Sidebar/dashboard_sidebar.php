@@ -9,14 +9,16 @@ use Illuminate\View\Component;
 class dashboard_sidebar extends Component
 {
     public $userClassrooms;
+    public $userEnrolled;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($userClassrooms)
+    public function __construct($userClassrooms/*,$userEnrolled*/)
     {
+///*        $this->userEnrolled = $userEnrolled;*/
         $this->userClassrooms = $userClassrooms;
     }
 

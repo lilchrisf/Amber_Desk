@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
 
             $table->foreignId('user_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('class_id')->constrained('classrooms','class_id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->boolean('is_enrolled');
+            $table->boolean('is_enrolled')->default(1);
 
 
             $table->timestamps();

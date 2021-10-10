@@ -13,11 +13,19 @@ class Student extends Model
 
 
     protected $fillable = [
-        'student_id',
+        'user_id',
         'class_id',
         'is_enrolled',
     ];
 
     protected $primaryKey = 'student_id';
     protected $table = 'students';
+
+    public function classroom(){
+        return $this->belongsTo(Classroom::class,'class_id','class_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class,'user_id','user_id');
+    }
 }

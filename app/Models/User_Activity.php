@@ -18,6 +18,9 @@ class User_Activity extends Model
     ];
 
     protected $primaryKey = 'user_activity_id';
-
     protected $table = 'user_activities';
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','user_id');
+    }
 }
