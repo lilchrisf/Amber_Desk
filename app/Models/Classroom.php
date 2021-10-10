@@ -14,6 +14,7 @@ class Classroom extends Model
 
     protected $fillable = [
         'password',
+        'relevance',
         'teacher_id',
         'class_nm',
         'invi_link',
