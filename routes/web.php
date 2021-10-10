@@ -29,5 +29,5 @@ Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
 });
 
 
-require __DIR__.'/OAuth.php';
+require __DIR__ . '/OAuthentication.php';
 require __DIR__.'/Login_Registration.php';
