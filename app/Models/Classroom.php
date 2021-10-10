@@ -11,31 +11,26 @@ class Classroom extends Model
 {
     use HasFactory, SoftDeletes;
 
-    /**
-     * @property mixed $user_id
-     * @property mixed $class_nm
-     * @property mixed $class_desc
-     * @property mixed $subject
-     * @property mixed $password
-     * @property mixed $invi_link
-     */
+
+    protected $fillable = [
+        'password',
+        'relevance',
+        'teacher_id',
+        'class_nm',
+        'invi_link',
+    ];
 
     protected $primaryKey = 'class_id';
     protected $table = 'classrooms';
 
-    protected $fillable = [
-        'user_id',
-        'class_nm',
-        'class_desc',
-        'subject',
-        'password',
-        'invi_link'
-    ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'teacher_id', 'user_id');
+    }
 
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
     }
-
 }

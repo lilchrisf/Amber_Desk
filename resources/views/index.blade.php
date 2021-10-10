@@ -22,18 +22,40 @@
         <div class=" shadow-2xl top-0 sticky  z-40 ">
             <div class="antialiased bg-gray-100 dark-mode:bg-gray-900">
                 <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
-                    <div class="flex items-center justify-between flex-row md:px-6 lg:px-8">
+                    <div class="flex items-center justify-between flex-row md:px-2 lg:px-2">
                         <div class="flex flex-row  items-center justify-between p-4">
 
-                            <x-logo.amber_desk/>
+                            @auth
+                            <div class="w-10 h-10 mr-2 rounded-full"><img class="rounded-full" alt="A" src="{{$user->user_info->avatar}}"> </div>
+                            @endauth
+
+                            <x-User.logo.logo_normal/>
 
                         </div>
 
-                        <div class="flex justify-between  w-48 h-full">
-                            <a href="{{route('Register')}}"
-                               class="bg-gray-100 hover:bg-orange-400 font-semibold duration-200 rounded px-4 py-2">Register</a>
-                            <a href="{{route('Login')}}"
-                               class="bg-gray-100 hover:bg-orange-400 font-semibold duration-200 rounded px-4 py-2">Login</a>
+                        <div class="flex justify-between  w-52 h-full">
+                            @auth
+
+                                <a href="{{route('User-Dashboard')}}"
+                                   class="bg-gray-100 hover:bg-orange-400 font-semibold duration-200 rounded px-4 py-2">Dashboard</a>
+
+
+                            <form action="{{route('Logout')}}" method="post">
+                                @csrf
+                                <button
+                                    type="submit"
+                                   class="bg-gray-100 hover:bg-red-500 font-semibold duration-200 rounded px-4 py-2">Logout</button>
+                            </form>
+
+
+                            @else
+                                <a href="{{route('Register')}}"
+                                   class="bg-gray-100 hover:bg-orange-400 font-semibold duration-200 rounded px-4 py-2">Register</a>
+                                <a href="{{route('Login')}}"
+                                   class="bg-gray-100 hover:bg-orange-400 font-semibold duration-200 rounded px-4 py-2">Login</a>
+
+                            @endauth
+
                         </div>
 
 
@@ -60,41 +82,41 @@
                         <div class="md:w-1/2 relative">
                             <div class="hidden md:block">
 
-{{--                                TODO Add Icons Or Image To Media Here--}}
+                                {{--                                TODO Add Icons Or Image To Media Here--}}
 
-{{--                                <div--}}
-{{--                                    class="-ml-24 -mb-40 absolute left-0 bottom-0 w-40 bg-white rounded-lg shadow-lg px-6 py-8"--}}
-{{--                                    style="transform: rotate(-8deg);"--}}
-{{--                                >--}}
+                                {{--                                <div--}}
+                                {{--                                    class="-ml-24 -mb-40 absolute left-0 bottom-0 w-40 bg-white rounded-lg shadow-lg px-6 py-8"--}}
+                                {{--                                    style="transform: rotate(-8deg);"--}}
+                                {{--                                >--}}
 
-{{--                                    --}}{{--                                    Media Here--}}
+                                {{--                                    --}}{{--                                    Media Here--}}
 
-{{--                                    <div class="text-gray-800 text-center">--}}
-{{--                                        Grade <br/>Tracking--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                    <div class="text-gray-800 text-center">--}}
+                                {{--                                        Grade <br/>Tracking--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-{{--                                <div--}}
-{{--                                    class="ml-24 mb-16 absolute left-0 bottom-0 w-40 bg-white rounded-lg shadow-lg px-6 py-8"--}}
-{{--                                    style="transform: rotate(-8deg); z-index: 2;"--}}
-{{--                                >--}}
-{{--                                    --}}{{--                                    Media Here--}}
+                                {{--                                <div--}}
+                                {{--                                    class="ml-24 mb-16 absolute left-0 bottom-0 w-40 bg-white rounded-lg shadow-lg px-6 py-8"--}}
+                                {{--                                    style="transform: rotate(-8deg); z-index: 2;"--}}
+                                {{--                                >--}}
+                                {{--                                    --}}{{--                                    Media Here--}}
 
-{{--                                    <div class="text-gray-800 text-center">--}}
-{{--                                        Classrooms--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                    <div class="text-gray-800 text-center">--}}
+                                {{--                                        Classrooms--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-{{--                                <div--}}
-{{--                                    class="ml-32 absolute left-0 bottom-0 w-48 bg-white rounded-lg shadow-lg px-10 py-8"--}}
-{{--                                    style="transform: rotate(-8deg); z-index: 2; margin-bottom: -220px;"--}}
-{{--                                >--}}
-{{--                                    --}}{{--                                    Media Here--}}
+                                {{--                                <div--}}
+                                {{--                                    class="ml-32 absolute left-0 bottom-0 w-48 bg-white rounded-lg shadow-lg px-10 py-8"--}}
+                                {{--                                    style="transform: rotate(-8deg); z-index: 2; margin-bottom: -220px;"--}}
+                                {{--                                >--}}
+                                {{--                                    --}}{{--                                    Media Here--}}
 
-{{--                                    <div class="text-gray-800 text-center">--}}
-{{--                                        Assignment <br/>Tracking--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                    <div class="text-gray-800 text-center">--}}
+                                {{--                                        Assignment <br/>Tracking--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
                                 <div
                                     class="mt-10 w-full absolute right-0 top-0 flex rounded-lg bg-white overflow-hidden shadow-lg"
@@ -103,7 +125,7 @@
                                     <div class="w-32 bg-gray-200" style="height: 560px;"></div>
                                     <div class="flex-1 p-6">
                                         <h2 class="text-lg text-gray-700 font-bold mb-3">
-                                            <x-logo.amber_desk/>
+                                            <x-User.logo.logo_normal/>
                                         </h2>
                                         <div class="flex mb-5 w-72">
                                             <div class="w-full rounded-full bg-gray-100 py-2 px-4"></div>
@@ -531,8 +553,6 @@
     </div>
 
 </div>
-
-
 
 
 

@@ -12,7 +12,7 @@ class StoreUserAction
 
     public function execute(StoreUserRequest $request):void {
         User::create([
-           'email_addr' => $request->email_addr,
+           'email' => $request->email_addr,
            'password' => ($request->password),
         ]);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Log_Reg;
 
+use App\Action\LoginAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthenticateUserRequest;
 use App\Models\User;
@@ -16,56 +17,14 @@ class LoginController extends Controller
         return view('Login_Registration.login');
     }
 
-    public function login(Request $request) {
+    public function login(AuthenticateUserRequest $loginRequest, LoginAction $loginAction) {
 
-        Auth::attempt([
-            'email_addr' => $request->email_addr,
-            'password' => $request->password
-        ]);
+        $loginAction->execute($loginRequest);
 
         return redirect('/');
 
     }
 
-    public function RedirectToGithub(): RedirectResponse
-    {
-        return Socialite::driver('github')->redirect();
-    }
-
-    public function handleGithubCallback()
-    {
-        $user = Socialite::driver('github')->user();
-
-        $this->registerOrLoginUser($user);
-
-        return redirect()->route('User-Dashboard');    }
-
-    public function RedirectToGoogle(): RedirectResponse
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    public function handleGoogleCallback()
-    {
-        $user = Socialite::driver('google')->user();
-
-        $this->registerOrLoginUser($user);
-
-        return redirect()->route('User-Dashboard');
-    }
-
-    public function registerOrLoginUser($data){
-        $user = User::where('email_addr',$data->email)->first();
-
-        if (!$user) {
-            $user = new User();
-            $user->username = $data->name;
-            $user->email_addr = $data->email;
-            $user->provider_id = $data->id;
-            $user->save();
-        }
-        Auth::login($user);
-    }
 
     public function logout(){
         Auth::logout();

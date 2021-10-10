@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Student extends Model
+class User_Activity extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
 
     protected $fillable = [
-        'student_id',
-        'class_id',
-        'is_enrolled',
+        'user_id',
+        'activity_desc',
     ];
 
-    protected $primaryKey = 'student_id';
-    protected $table = 'students';
+    protected $primaryKey = 'user_activity_id';
+
+    protected $table = 'user_activities';
 }
