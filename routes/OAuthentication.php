@@ -7,3 +7,5 @@ Route::get('login/github/callback', [OAuthController::class, 'handleGithubCallba
 
 Route::post('login/google', [OAuthController::class, 'RedirectToGoogle'])->name('Google-Login');
 Route::get('login/google/callback', [OAuthController::class, 'handleGoogleCallback']);
+
+
