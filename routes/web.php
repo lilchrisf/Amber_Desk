@@ -27,10 +27,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('User-Dash
 
 Route::get('/c/i/{invitationID}',[InvitationController::class,'invitationView'])->name('Invitation-Handler');
 Route::post('/c/v/{invitation}',[InvitationController::class,'InvitationValidate'])->name('Invitation-Validate');
+Route::post('/c/r/{classroom}', [ClassroomController::class, 'restore'])->name('Restore-Classroom');
+Route::post('/c/j/', [ClassroomController::class, 'join'])->name('Join-Classroom');
 
-Route::post('/dashboard/restore/{classroom}', [ClassroomController::class, 'restore'])->name('Restore-Classroom');
 Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
-    Route::resource('classroom', ClassroomController::class)->except('index');
+    Route::resource('classroom', ClassroomController::class)->except('index','create');
 });
 
 

@@ -16,10 +16,10 @@
             </button>
         </div>
         <div class="flex flex-col  w-full mx-auto text-left lg:px-20 lg:text-center">
-            <h2 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font">Create
-                Classroom </h2>
-            <h1 class="text-2xl font-semibold leading-none tracking-tighter text-black title-font"> A
-                Changing The World, One Classroom At A Time </h1>
+            <h2 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font">
+                Changing The World, One Desk At A Time </h2>
+            <h1 class="text-2xl font-semibold leading-none tracking-tighter text-black title-font">
+                Create Desk </h1>
         </div>
         <form
             id="crt_classroom_form"

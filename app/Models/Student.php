@@ -22,10 +22,15 @@ class Student extends Model
     protected $table = 'students';
 
     public function classroom(){
-        return $this->belongsTo(Classroom::class,'class_id','class_id');
+        return $this->belongsTo(Classroom::class,'class_id','class_id')->with('teacherInfo');
     }
 
     public function user() {
         return $this->belongsTo(User::class,'user_id','user_id');
     }
+
+    public function user_info(){
+        return $this->hasOne(User_info::class,'user_id','user_id');
+    }
+
 }
