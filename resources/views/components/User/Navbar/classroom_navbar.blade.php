@@ -25,9 +25,7 @@
                 <style>
                     @import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);
                     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap');
-                    body {
-                        font-family: 'Poppins', sans-serif;
-                    }
+
                     .hover\:w-full:hover {
                         width: 100%;
                     }

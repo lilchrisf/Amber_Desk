@@ -30,7 +30,7 @@
                     {{--                                            <a class="px-4 py-2 mt-2 text-sm text-orange-500 font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a>--}}
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open"
-                                class="flex duration-300 bg-orange-500 flex-row text-gray-900 bg-gray-200 items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-orange-400 focus:bg-orange-400 focus:outline-none">
+                                class="flex bg-blue-400 hover:bg-blue-500 duration-300 flex-row text-gray-900 bg-gray-200 items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-white focus:text-gray-900  focus:bg-blue-400 focus:outline-none">
                             <span>Options</span>
                             <svg fill="currentColor" viewBox="0 0 20 20"
                                  :class="{'rotate-180': open, 'rotate-0': !open}"
@@ -52,9 +52,9 @@
                                 <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                                     <button
                                         id="crt_classroom_open_btn"
-                                        class="flex flex items-center  row items-start rounded-lg bg-transparent p-2  hover:text-gray-900 focus:text-gray-900 hover:bg-orange-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                        class="flex flex items-center duration-300  row items-start rounded-lg bg-transparent p-2  hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                         href="#">
-                                        <div class="bg-orange-400 text-white rounded-lg p-3">
+                                        <div class="bg-blue-400 text-white rounded-lg p-3">
                                             <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                  stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                                  class="md:h-6 md:w-6 h-4 w-4">
@@ -69,9 +69,9 @@
 
                                     <button
                                         id="join_classroom_open_btn"
-                                        class="flex flex items-center  row items-start rounded-lg bg-transparent p-2  hover:text-gray-900 focus:text-gray-900 hover:bg-orange-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                        class="flex flex items-center duration-300   row items-start rounded-lg bg-transparent p-2  hover:text-gray-900 focus:text-gray-900 hover:bg-blue-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                         href="#">
-                                        <div class="bg-orange-400 text-white rounded-lg p-3">
+                                        <div class="bg-blue-400 text-white rounded-lg p-3">
                                             <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                  stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                                  class="md:h-6 md:w-6 h-4 w-4">

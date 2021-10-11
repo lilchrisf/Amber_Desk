@@ -17,20 +17,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class ClassroomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function index()
-    {
-        return view('user.Classroom.view');
-    }
 
 
     /**
@@ -40,12 +29,11 @@ class ClassroomController extends Controller
      * @param StoreClassroomAction $action
      * @return RedirectResponse
      */
-    public function store(StoreClassroomRequest $request ,StoreClassroomAction $action): RedirectResponse
+    public function store(StoreClassroomRequest $request, StoreClassroomAction $action): RedirectResponse
     {
-//        dd($request->all());
         $action->execute($request);
 
-        return redirect()->route('User-Dashboard')->with('message','Classroom Created Successfully');
+        return redirect()->route('User-Dashboard')->with('message', 'Classroom Created Successfully');
 
     }
 
@@ -57,18 +45,15 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        $Classroom = Classroom::with('user')->find($classroom);
-        $userClassrooms = Classroom::all()->where('teacher_id',auth()->id());
-        $userEnrolled = User::with('student')->where('user_id',auth()->id())->first();
-
+//        dd($Classroom);
+        $Classroom = Classroom::with(['teacherInfo', 'classroomStudents', 'assignments', 'homework'])->find($classroom->class_id);
+        $userClassrooms = Classroom::all()->where('teacher_id', auth()->id());
+        $userEnrolled = User::with('student')->where('user_id', auth()->id())->first();
 
 //        TODO RELEVANCE FUNCTIONALITY
 
-
-        return view('user.Classroom.view',compact('Classroom','userClassrooms','userEnrolled'));
+        return view('user.Classroom.view', compact('Classroom', 'userClassrooms', 'userEnrolled'));
     }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -86,17 +71,17 @@ class ClassroomController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Classroom $classroom
-     * @return Application|Redirector|RedirectResponse
+     * @return RedirectResponse
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Classroom $classroom):RedirectResponse
     {
 //        dd($classroom);
 
 //        TODO ADD RELATION DELETE ACTION
+
         $classroom->delete();
 
-
-        return redirect()->route('User-Dashboard')->with('message',$classroom->class_nm.' '. 'Deleted Successfully')->with('undoDeletion',$classroom);
+        return redirect()->route('User-Dashboard')->with('message', $classroom->class_nm . ' ' . 'Deleted Successfully')->with('undoDeletion', $classroom);
     }
 
 
@@ -113,9 +98,9 @@ class ClassroomController extends Controller
     }
 
 
-    public function join(JoinClassRoomRequest $joinClassRoomRequest,JoinClassroomAction $classroomAction): RedirectResponse
+    public function join(JoinClassRoomRequest $joinClassRoomRequest, JoinClassroomAction $classroomAction): RedirectResponse
     {
-        $Classroom = Classroom::where('invi_link',$joinClassRoomRequest->class_id)->first();
+        $Classroom = Classroom::where('invi_link', $joinClassRoomRequest->class_id)->first();
 
         if (!$Classroom) {
 //            TODO MAKE ERROR TOAST
@@ -124,7 +109,7 @@ class ClassroomController extends Controller
 
         }
 
-        if (!Hash::check($joinClassRoomRequest->class_password,$Classroom->password)) {
+        if (!Hash::check($joinClassRoomRequest->class_password, $Classroom->password)) {
 //            TODO MAKE ERROR TOAST
 
             return redirect()->back()->with(['message' => 'Classroom Password Incorrect']);

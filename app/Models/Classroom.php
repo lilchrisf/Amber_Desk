@@ -35,6 +35,10 @@ class Classroom extends Model
         return $this->belongsTo(User_info::class, 'teacher_id', 'user_id');
     }
 
+    public function classroomStudents(){
+        return $this->hasMany(Student::class,'class_id','class_id')->with('user_info');
+    }
+
     public function student(){
         return $this->hasMany(Student::class,'class_id','class_id');
     }
@@ -57,7 +61,6 @@ class Classroom extends Model
 
     public function setInviLinkAttribute()
     {
-        $this->attributes['invi_link'] = (Str::slug(Hash::make($this->attributes['class_nm'].uniqid('', true))));
-
+        $this->attributes['invi_link'] = (Str::slug($this->attributes['class_nm']." ".uniqid('')));
     }
 }

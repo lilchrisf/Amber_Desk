@@ -10,6 +10,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script defer src="{{asset("js/DashboardModalControl.js")}}"></script>
+    <script defer src="{{asset("js/DeskOwnerControl.js")}}"></script>
+
     <script defer src="{{asset("js/DashboardAlertToggleControl.js")}}"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -29,8 +31,7 @@
 
 
 
-<div class=" flex flex-col h-screen ">
-
+<div class="  flex flex-col h-screen ">
 
 
     <div style="height: 9vh">
@@ -43,7 +44,7 @@
             @yield('sidebar')
         </div>
 
-        <div class=" flex-col px-5 h-full  w-10/12 overflow-y-auto">
+        <div class="overflow-x-hidden flex-col px-5 h-full  w-10/12 overflow-y-auto">
 
 
             @if (session()->has('undoDeletion'))

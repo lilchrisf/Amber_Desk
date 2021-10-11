@@ -12,81 +12,159 @@
 
 @section('content')
 
-    {{--Navbar Start--}}
-{{--    <style>--}}
-{{--        @import url(https://pro.fontawesome.com/releases/v5.10.0/css/all.css);--}}
-{{--        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap');--}}
-{{--        body {--}}
-{{--            font-family: 'Poppins', sans-serif;--}}
-{{--        }--}}
-{{--        .hover\:w-full:hover {--}}
-{{--            width: 100%;--}}
-{{--        }--}}
-{{--        .group:hover .group-hover\:w-full {--}}
-{{--            width: 100%;--}}
-{{--        }--}}
-{{--        .group:hover .group-hover\:inline-block {--}}
-{{--            display: inline-block;--}}
-{{--        }--}}
-{{--        .group:hover .group-hover\:flex-grow {--}}
-{{--            flex-grow: 1;--}}
-{{--        }--}}
-{{--    </style>--}}
 
-{{--    <div class="min-w-full flex items-center justify-center px-5 pt-5 ">--}}
-{{--        <div class="w-full max-w-md mx-auto">--}}
 
-{{--            <div class="px-7 bg-white shadow-lg rounded-2xl mb-5">--}}
-{{--                <div class="flex">--}}
-{{--                    <div class="flex-auto duration-300 transition hover:w-full group">--}}
-{{--                        <a href="#" class="flex items-center justify-center text-center mx-auto px-4 py-2 group-hover:w-full text-indigo-500">--}}
-{{--                        <span class="block px-1 py-1 group-hover:bg-indigo-100 rounded-full group-hover:flex-grow">--}}
-{{--                            <i class="far fa-home text-2xl pt-1"></i><span class="hidden group-hover:inline-block ml-3 align-bottom pb-1">Home</span>--}}
-{{--                        </span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                    <div class="flex-auto hover:w-full group">--}}
-{{--                        <a href="#" class="flex items-center justify-center text-center mx-auto px-4 py-2 group-hover:w-full text-indigo-500">--}}
-{{--                        <span class="block px-1 py-1 group-hover:bg-indigo-100 rounded-full group-hover:flex-grow">--}}
-{{--                            <i class="far fa-compass text-2xl pt-1"></i><span class="hidden group-hover:inline-block ml-3 align-bottom pb-1">Explore</span>--}}
-{{--                        </span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                    <div class="flex-auto hover:w-full group">--}}
-{{--                        <a href="#" class="flex items-center justify-center text-center mx-auto px-4 py-2 group-hover:w-full text-indigo-500">--}}
-{{--                        <span class="block px-1 py-1 group-hover:bg-indigo-100 rounded-full group-hover:flex-grow">--}}
-{{--                            <i class="far fa-search text-2xl pt-1"></i><span class="hidden group-hover:inline-block ml-3 align-bottom pb-1">Search</span>--}}
-{{--                        </span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                    <div class="flex-auto hover:w-full group">--}}
-{{--                        <a href="#" class="flex items-center justify-center text-center mx-auto px-4 py-2 group-hover:w-full text-indigo-500">--}}
-{{--                        <span class="block px-1 py-1 group-hover:bg-indigo-100 rounded-full group-hover:flex-grow">--}}
-{{--                            <i class="far fa-cog text-2xl pt-1"></i><span class="hidden group-hover:inline-block ml-3 align-bottom pb-1">Settings</span>--}}
-{{--                        </span>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+    <div class="h-5/12 text-white flex-col mb-6 rounded-b-lg  justify-start flex items-center "
+         style="background: url('https://source.unsplash.com/random'); object-fit: cover; object-position: center;">
 
-{{--        </div>--}}
-{{--    </div>--}}
-    {{--Navbar End--}}
-    {{$Classroom[0]->class_nm}}
-    <div class="divide-blue-400"></div>
-    {{$Classroom[0]->password}}
-    <div class="divide-blue-400"></div>
-    {{$Classroom[0]->invi_link}}
-    <div class="divide-blue-400"></div>
-    <a href="{{'http://127.0.0.1:8000'.'/'.'c'.'/'.'i'.'/'.$Classroom[0]->invi_link}}">Invitation Link</a>
-    <div class="divide-blue-400"></div>
-    {{$Classroom[0]->class_id}}
+        {{--                {{dd($Classroom->classroomStudents)}}--}}
 
-    <form method="post" action="{{route('user.classroom.destroy',[$Classroom[0]])}}">
-        @method('delete')
+        <div class="w-full flex flex-col justify-around h-full">
+            {{--Navbar End--}}
+            <div
+                class=" shadow-2xl ml-4 p-4 rounded-2xl bg-black bg-opacity-70 w-2/3  h-1/2 flex justify-around flex-col">
+                <div class="text-4xl">{{$Classroom->class_nm}}</div>
+
+                <div class="text-md"><span id="classroom_link">Classroom ID: {{$Classroom->invi_link}}</span></div>
+            </div>
+
+        </div>
+
+        <div class="flex justify-end items-end w-full">
+            {{--            <div>Change Image</div>--}}
+        </div>
+
+    </div>
+
+    <button id="mkAnnouncementBtn"
+            class="py-1  w-full flex items-center justify-between px-6  rounded-2xl shadow-inner border-b border-gray-100">
+
+        <div class="flex-row items-center flex">
+            <div class="flex relative w-12 h-12 justify-center items-center m-1 mr-2 text-xl rounded-full text-white">
+                <img class="rounded-full" alt="A" src="{{$Classroom->teacherInfo->avatar}}"></div>
+
+            <div class="text-sm text-gray-600 font-semibold">Make Announcement To Desk</div>
+        </div>
+
+        <div>
+            <div class="mx-auto flex gap-10">
+                <div class="w-auto h-auto">
+                    <div class="flex-1 h-full">
+                        <div class="flex items-center justify-center flex-1 h-full p-2 bg-white shadow-md rounded-lg">
+                            <div class="relative">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                     viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <form id="addAnnouncementView" method="post" action="" class="h-3/12">
         @csrf
-        <button type="submit" class="px-4 py-2 bg-red-500 rounded">Delete</button>
+        <textarea name="announcement_message"
+                  placeholder="Announcement"
+                  class="py-1 resize-none mt-6  h-full w-full flex items-center justify-between px-6  rounded-2xl shadow-inner border-b border-gray-100 focus:outline-none"></textarea>
+
+        <div id="addAnnouncementsBtnControl" class="w-full justify-between   items-center flex">
+            <div class=" duration-200 rounded-xl  shadow-md ml-2 w-1/5">
+
+                <select name="student"
+                        class=" duration-300 font-extrabold  border-b-2 border-orange-400 form-select focus:outline-none outline-none focus:ring-0  block w-full mt-1">
+                    @forelse($Classroom->classroomStudents as $students)
+                        <option  value="All" selected>For All</option>
+                        <option
+                            value="{{$students->user_info->user_id}}">{{$students->user_info->first_nm}} {{$students->user_info->last_nm}}</option>
+                    @empty
+                        <option selected disabled>For All</option>
+                    @endforelse
+                </select>
+
+            </div>
+
+            <div>
+
+                <div class="flex items-center  justify-center">
+
+                    <div class="m-3">
+                        <button
+                            type="button"
+                            id="mkAnnouncementCloseBtn"
+                            class="bg-white text-gray-800 font-bold rounded duration-200 border-b-2 border-red-500 hover:border-red-600 hover:bg-red-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                            <span class="mr-2">Close</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentcolor"
+                                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="m-3">
+                        <button
+                            type="submit"
+                            class="bg-white text-gray-800 font-bold rounded border-b-2 duration-200 border-green-400 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                            <span class="mr-2">Send</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
     </form>
+
+        <section
+            id="userActivity"
+            class="relative mt-6 h-4/12   bg-blueGray-50">
+            <div class="w-full h-full">
+                <div class="relative h-full flex flex-col min-w-0 break-words w-full  shadow-inner rounded-2xl text-black">
+                    <div class="rounded-t mb-0 px-4 py-3 border-0">
+                        <div class="flex flex-wrap items-center">
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
+                                <h3 class="font-semibold text-lg text-black">Desk Activity</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block w-full overflow-x-auto ">
+                        <table class="items-center w-full bg-transparent border-collapse">
+                            <tbody>
+                            <tr>
+                                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                                    <img src="{{$Classroom->teacherInfo->avatar}}" class="h-10 w-10 bg-white rounded-full border" alt="...">
+                                    <span class="ml-3 font-bold text-black"> Javaughn Bailey </span></th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <script>
+
+    </script>
+
+
+
+
+
+    {{--        <form method="post" action="{{route('user.classroom.destroy',[$Classroom])}}">--}}
+    {{--            @method('delete')--}}
+    {{--            @csrf--}}
+    {{--            <button type="submit" class="px-4 py-2 bg-red-500 rounded">Delete</button>--}}
+    {{--        </form>--}}
+
+
 
 
 
