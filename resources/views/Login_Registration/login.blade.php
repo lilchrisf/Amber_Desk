@@ -56,8 +56,6 @@
 
             <p class="mt-8">Need an account? <a href="{{route('Register')}}" class="text-blue-500 hover:text-blue-700 font-semibold">Create an
                     account</a></p>
-
-
         </div>
     </div>
 @endsection

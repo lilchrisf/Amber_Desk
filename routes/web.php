@@ -30,6 +30,8 @@ Route::post('/c/v/{invitation}',[InvitationController::class,'InvitationValidate
 Route::post('/c/r/{classroom}', [ClassroomController::class, 'restore'])->name('Restore-Classroom');
 Route::post('/c/j/', [ClassroomController::class, 'join'])->name('Join-Classroom');
 
+//Route::post
+
 Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
     Route::resource('classroom', ClassroomController::class)->except('index','create');
 });

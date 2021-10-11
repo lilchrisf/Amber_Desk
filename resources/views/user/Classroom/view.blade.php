@@ -12,15 +12,14 @@
 
 @section('content')
 
-
+<div id="desk_home_view" class="w-full h-full">
 
     <div class="h-5/12 text-white flex-col mb-6 rounded-b-lg  justify-start flex items-center "
          style="background: url('https://source.unsplash.com/random'); object-fit: cover; object-position: center;">
-
+{{--TODO MAKE THIS CHANGEABLE--}}
         {{--                {{dd($Classroom->classroomStudents)}}--}}
 
         <div class="w-full flex flex-col justify-around h-full">
-            {{--Navbar End--}}
             <div
                 class=" shadow-2xl ml-4 p-4 rounded-2xl bg-black bg-opacity-70 w-2/3  h-1/2 flex justify-around flex-col">
                 <div class="text-4xl">{{$Classroom->class_nm}}</div>
@@ -30,8 +29,14 @@
 
         </div>
 
-        <div class="flex justify-end items-end w-full">
-            {{--            <div>Change Image</div>--}}
+        <div class="flex justify-end p-5 items-end w-full">
+            <button id="change_cover_img_btn" class="focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 duration-200  hover:text-orange-400" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+            </button>
         </div>
 
     </div>
@@ -77,7 +82,7 @@
                 <select name="student"
                         class=" duration-300 font-extrabold  border-b-2 border-orange-400 form-select focus:outline-none outline-none focus:ring-0  block w-full mt-1">
                     @forelse($Classroom->classroomStudents as $students)
-                        <option  value="All" selected>For All</option>
+                        <option value="All" selected>For All</option>
                         <option
                             value="{{$students->user_info->user_id}}">{{$students->user_info->first_nm}} {{$students->user_info->last_nm}}</option>
                     @empty
@@ -122,47 +127,117 @@
         </div>
     </form>
 
-        <section
-            id="userActivity"
-            class="relative mt-6 h-4/12   bg-blueGray-50">
-            <div class="w-full h-full">
-                <div class="relative h-full flex flex-col min-w-0 break-words w-full  shadow-inner rounded-2xl text-black">
-                    <div class="rounded-t mb-0 px-4 py-3 border-0">
-                        <div class="flex flex-wrap items-center">
-                            <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                                <h3 class="font-semibold text-lg text-black">Desk Activity</h3>
-                            </div>
+    <section
+        id="userActivity"
+        class="relative mt-6 h-4/12   bg-blueGray-50">
+        <div class="w-full h-full">
+            <div class="relative h-full flex flex-col min-w-0 break-words w-full  shadow-inner rounded-2xl text-black">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
+                            <h3 class="font-semibold text-lg text-black">Desk Activity</h3>
                         </div>
                     </div>
-                    <div class="block w-full overflow-x-auto ">
-                        <table class="items-center w-full bg-transparent border-collapse">
-                            <tbody>
-                            <tr>
-                                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                                    <img src="{{$Classroom->teacherInfo->avatar}}" class="h-10 w-10 bg-white rounded-full border" alt="...">
-                                    <span class="ml-3 font-bold text-black"> Javaughn Bailey </span></th>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                </div>
+                <div class="block w-full overflow-x-auto ">
+                    <table class="items-center w-full bg-transparent border-collapse">
+                        <tbody>
+                        <tr>
+                            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                                <img src="{{$Classroom->teacherInfo->avatar}}"
+                                     class="h-10 w-10 bg-white rounded-full border" alt="...">
+                                <span class="ml-3 font-bold text-black"> Javaughn Bailey </span></th>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+</div>
+
+<div id="desk_classwork_view" class="w-full h-full">
+classwork
+</div>
+
+<div id="desk_student_view" class="w-full h-full">
+    Students
+</div>
+
+<div id="desk_settings_view" class="w-full h-full">
+Settings
+</div>
+
+<script>
+
+    $(document).ready(function (){
+
+        let desk_home_btn = $('#desk_home_btn'),
+            desk_classwork_btn = $('#desk_work_btn'),
+            desk_student_btn = $('#desk_students'),
+            desk_settings_btn = $('#desk_settings'),
+
+            desk_home_view = $('#desk_home_view'),
+            desk_classwork_view = $('#desk_classwork_view'),
+            desk_student_view = $('#desk_student_view'),
+            desk_settings_view = $('#desk_settings_view')
 
 
-    <script>
-
-    </script>
-
-
+        desk_classwork_view.hide()
+        desk_student_view.hide()
+        desk_settings_view.hide()
 
 
+        function classViewToggle($view){
+            desk_home_view.slideUp()
+            desk_classwork_view.slideUp()
+            desk_student_view.slideUp()
+            desk_settings_view.slideUp()
 
-    {{--        <form method="post" action="{{route('user.classroom.destroy',[$Classroom])}}">--}}
-    {{--            @method('delete')--}}
-    {{--            @csrf--}}
-    {{--            <button type="submit" class="px-4 py-2 bg-red-500 rounded">Delete</button>--}}
-    {{--        </form>--}}
+            if($view === 'home'){
+                desk_home_view.slideDown()
+            }
+            else if($view === 'classwork'){
+                desk_classwork_view.slideDown()
+            }
+            else if($view === 'student'){
+                desk_student_view.slideDown()
+            }
+            else if($view === 'settings'){
+                desk_settings_view.slideDown()
+            }
+            console.log('Review Function')
+        }
+
+        desk_home_btn.on('click',function (){
+            classViewToggle('home')
+        });
+
+        desk_classwork_btn.on('click',function (){
+            classViewToggle('classwork')
+        });
+
+        desk_student_btn.on('click',function (){
+            classViewToggle('student')
+        });
+
+        desk_settings_btn.on('click',function (){
+            classViewToggle('settings')
+        });
+    });
+
+</script>
+
+
+
+
+
+
+    {{--            <form method="post" action="{{route('user.classroom.destroy',[$Classroom])}}">--}}
+    {{--                @method('delete')--}}
+    {{--                @csrf--}}
+    {{--                <button type="submit" class="px-4 py-2 bg-red-500 rounded">Delete</button>--}}
+    {{--            </form>--}}
 
 
 

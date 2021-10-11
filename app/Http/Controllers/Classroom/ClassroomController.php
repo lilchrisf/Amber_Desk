@@ -120,5 +120,9 @@ class ClassroomController extends Controller
         return redirect()->route('User-Dashboard')->with(['message' => 'Joined Classroom Successfully']);
     }
 
+    public function student(Classroom $classroom) {
+            return $classroom;
+    }
+
 
 }
