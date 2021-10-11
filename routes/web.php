@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Homepage\HomepageController;
+use App\Http\Controllers\Invitation\InvitationController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +19,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [HomepageController::class, 'index'])->name('Homepage');
 
-Route::get('/',[HomepageController::class,'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('User-Dashboard');
+
+
+
+Route::get('/c/i/{invitationID}',[InvitationController::class,'invitationView'])->name('Invitation-Handler');
+Route::post('/c/v/{invitation}',[InvitationController::class,'InvitationValidate'])->name('Invitation-Validate');
+Route::post('/c/r/{classroom}', [ClassroomController::class, 'restore'])->name('Restore-Classroom');
+Route::post('/c/j/', [ClassroomController::class, 'join'])->name('Join-Classroom');
+
+//Route::post
+
+Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
+    Route::resource('classroom', ClassroomController::class)->except('index','create');
+});
+
+
+require __DIR__ . '/OAuthentication.php';
+require __DIR__.'/Login_Registration.php';

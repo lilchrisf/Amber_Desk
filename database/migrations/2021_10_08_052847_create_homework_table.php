@@ -14,8 +14,8 @@ class CreateHomeworkTable extends Migration
     public function up()
     {
         Schema::create('homework', function (Blueprint $table) {
-            $table->id('hw_id');
-            $table->foreignId('class_id')->constrained('class_rooms','class_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->id('homework_id');
+            $table->foreignId('class_id')->constrained('classrooms','class_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('task');
             $table->longText('description');
             $table->date('deadline');

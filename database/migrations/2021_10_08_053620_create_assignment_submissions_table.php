@@ -14,13 +14,13 @@ class CreateAssignmentSubmissionsTable extends Migration
     public function up()
     {
         Schema::create('assignment_submissions', function (Blueprint $table) {
-            $table->id('assign_id');
+            $table->id('assignment_id');
 
-            $table->foreignId('student_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('home_work')->constrained('homework','hw_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users','user_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('homework_id')->constrained('homework','homework_id')->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->longText('assignment');
-            $table->string('completion_status');
+            $table->boolean('completion_status')->default(0);
             $table->integer('grade');
             $table->timestamps();
             $table->softDeletes();

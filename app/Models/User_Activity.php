@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User_activity extends Model
+class User_Activity extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -18,6 +18,9 @@ class User_activity extends Model
     ];
 
     protected $primaryKey = 'user_activity_id';
-
     protected $table = 'user_activities';
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','user_id');
+    }
 }
